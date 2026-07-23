@@ -1,54 +1,24 @@
-// ============================================
-// App.jsx
-// This is the ONLY component in this project.
-// It contains all the logic for the
-// "Social Media Post Composer" lab experiment.
-// ============================================
 
-// useState -> lets us store and update data (called "state")
-// useEffect -> lets us run code automatically at certain times
-//              (like "when the page loads")
 import { useState, useEffect } from "react";
 import "./App.css";
 import { CHARACTER_LIMITS, PLATFORMS } from "./utils";
 
 function App() {
-  // ---------------- STATE VARIABLES ----------------
-  // State = data that React "remembers" and re-renders the UI
-  // whenever it changes.
-
-  // Currently selected platform (default: twitter)
+  
   const [platform, setPlatform] = useState("twitter");
-
-  // Text typed by the user in the textarea
   const [text, setText] = useState("");
-
-  // List of all saved drafts. Starts empty.
   const [drafts, setDrafts] = useState([]);
-
-  // If we are editing a draft, this stores that draft's id.
-  // If it is null, it means we are creating a NEW draft.
   const [editingId, setEditingId] = useState(null);
 
-  // Activity log messages (Draft Saved, Draft Deleted, etc.)
+  
   const [logs, setLogs] = useState([]);
-
-  // Status of the mock "Publish" API call.
-  // Can be: "idle", "saving", "success", "failed"
   const [publishStatus, setPublishStatus] = useState("idle");
 
-  // How many times we have retried publishing (max 3)
   const [retryCount, setRetryCount] = useState(0);
-
-  // ---------------- LOAD DRAFTS ON PAGE LOAD ----------------
-  // useEffect with an empty array [] as the second argument
-  // means: "run this ONLY ONCE, when the component first loads"
-  // This is how we load saved drafts from localStorage after a refresh.
   useEffect(() => {
     const savedDrafts = localStorage.getItem("drafts");
     if (savedDrafts) {
-      // localStorage only stores strings, so we convert
-      // the string back into a real JS array using JSON.parse
+      
       setDrafts(JSON.parse(savedDrafts));
     }
   }, []);
