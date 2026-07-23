@@ -1,0 +1,135 @@
+/* ============================================
+   App.css
+   Simple plain CSS. No frameworks, no gradients,
+   no animations. Just a different color/layout
+   choice from before.
+   ============================================ */
+
+/* Basic reset so default browser spacing doesn't mess things up */
+* {
+  box-sizing: border-box;
+  font-family: "Trebuchet MS", Arial, sans-serif;
+}
+
+body {
+  background-color: #fdf6ec; /* soft cream background */
+  margin: 0;
+  padding: 20px;
+}
+
+/* Centers all our cards in the middle of the page */
+.container {
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+h1 {
+  text-align: center;
+  color: #2f4858;
+  border-bottom: 3px solid #2f4858;
+  padding-bottom: 10px;
+}
+
+h2 {
+  color: #2f4858;
+  margin-top: 0;
+}
+
+/* Each "card" is one box (Composer, Stats, Drafts, Log).
+   Using a plain border instead of a shadow keeps it simple. */
+.card {
+  background: #ffffff;
+  border: 2px solid #2f4858;
+  border-radius: 6px;
+  padding: 18px;
+  margin-bottom: 18px;
+}
+
+label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+  color: #2f4858;
+}
+
+select,
+textarea {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 2px solid #cbb994;
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: #fffdf9;
+}
+
+/* Puts Save/Publish or Edit/Delete buttons side by side */
+.button-row {
+  display: flex;
+  gap: 10px;
+}
+
+button {
+  background-color: #e07a5f; /* warm terracotta */
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: #c96548;
+}
+
+/* Disabled publish button (when character limit exceeded) */
+button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+/* Green text for success / valid messages */
+.success-text {
+  color: #2a7a2a;
+  font-weight: bold;
+}
+
+/* Red text for errors / exceeded limit */
+.error-text {
+  color: #b33a3a;
+  font-weight: bold;
+}
+
+/* One box per draft inside the Drafts card.
+   Left border colored to just separate items visually. */
+.draft-item {
+  border-left: 5px solid #e07a5f;
+  background: #fffaf3;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+/* Activity log list styling */
+ul {
+  padding-left: 20px;
+  font-size: 14px;
+  color: #444;
+}
+
+/* Statistics laid out as a simple 2-column grid instead of stacked lines */
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.stats-grid p {
+  background: #f4ede0;
+  border: 1px solid #cbb994;
+  border-radius: 4px;
+  padding: 8px;
+  margin: 0;
+  text-align: center;
+}
