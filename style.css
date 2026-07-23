@@ -1,83 +1,110 @@
-/* Import modern font */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    font-family: "Segoe UI", Tahoma, sans-serif;
 }
 
-/* Background gradient */
 body {
-    height: 100vh;
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+    overflow: hidden;
 }
 
-/* Main container */
-.container {
-    background: rgba(255, 255, 255, 0.12);
-    backdrop-filter: blur(15px);
-    padding: 40px;
-    border-radius: 18px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.25);
-    text-align: center;
-    width: 80%;
+body::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("bg.jpg");
+    background-size: cover;
+    background-position: center;
+    filter: blur(10px);
+    transform: scale(1.15);
+    z-index: -2;
+}
+
+body::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    z-index: -1;
+}
+
+.glass-card {
+    width: 92%;
     max-width: 900px;
+    padding: 40px 35px;
+    border-radius: 18px;
+    text-align: center;
+
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.25),
+        rgba(255, 255, 255, 0.1)
+    );
+
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.45);
 }
 
-/* Title styling */
-.container h1 {
-    color: white;
-    margin-bottom: 30px;
-    font-size: 32px;
-    font-weight: 600;
-    letter-spacing: 1px;
+h1 {
+    font-size: 30px;
+    color: #ffffff;
 }
 
-/* Button grid layout */
-.buttons {
+h1 span {
+    display: block;
+    font-size: 16px;
+    font-weight: 400;
+    color: #d1d5db;
+    margin-top: 6px;
+}
+
+.projects {
+    margin-top: 30px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
 }
 
-/* Elegant buttons */
-.btn {
-    padding: 14px 18px;
-    background: linear-gradient(135deg, #5f72bd, #9b23ea);
-    color: white;
-    text-decoration: none;
-    border-radius: 10px;
+.project-card {
+    text-decoration: none;   
+    padding: 16px;
+    border-radius: 12px;
+    font-size: 17px;
     font-weight: 500;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    color: #ffffff;
+
+    background: linear-gradient(135deg, #2563eb, #1e40af);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-/* Hover effect */
-.btn:hover {
-    transform: translateY(-4px) scale(1.03);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.35);
-    background: linear-gradient(135deg, #667eea, #764ba2);
+.project-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 18px 35px rgba(0, 0, 0, 0.45);
 }
 
-/* Click effect */
-.btn:active {
-    transform: scale(0.98);
-}
 
-/* Responsive design */
-@media (max-width: 768px) {
-    .buttons {
-        grid-template-columns: repeat(2, 1fr);
+@media (max-width: 480px) {
+    h1 {
+        font-size: 24px;
+    }
+
+    .project-card {
+        font-size: 15px;
+        padding: 14px;
     }
 }
-
-@media (max-width: 500px) {
-    .buttons {
-        grid-template-columns: repeat(1, 1fr);
+@media (max-width: 768px) {
+    .projects {
+        grid-template-columns: 1fr;
     }
 }
